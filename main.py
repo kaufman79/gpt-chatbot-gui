@@ -1,5 +1,6 @@
 from PyQt6.QtWidgets import QMainWindow, QTextEdit, QLineEdit, QPushButton, QApplication
 import sys
+from backend import Chatbot
 
 class ChatbotWindow(QMainWindow):
     def __init__(self):
@@ -20,14 +21,16 @@ class ChatbotWindow(QMainWindow):
         # Add button
         self.button = QPushButton("send", self)
         self.button.setGeometry(500, 340, 100, 40)
+        self.button.clicked.connect(self.call_bot)
 
         self.show()
 
+    def call_bot(self):
+        user_input = self.input_field
 
-class Chatbot:
-    pass
 
 
 app = QApplication(sys.argv)
 main_window = ChatbotWindow()
+main_window.show()
 sys.exit(app.exec())
